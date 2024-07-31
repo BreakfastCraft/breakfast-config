@@ -20,9 +20,9 @@ install:
 
     # If a custom installer is supposed to used, specify the url here: (Otherwise put "", ~ or null here)
     # supports variables: {{@loaderversion@}} and {{@mcversion@}}
-    # For forge: installerUrl: "http://files.minecraftforge.net/maven/net/minecraftforge/forge/{{@mcversion@}}-{{@loaderversion@}}/forge-{{@mcversion@}}-{{@loaderversion@}}-installer.jar"
     # For Fabric: installerUrl: "https://maven.fabricmc.net/net/fabricmc/fabric-installer/{{@loaderversion@}}/fabric-installer-{{@loaderversion@}}.jar"
-    # For neoforge installerUrl: 'https://maven.neoforged.net/releases/net/neoforged/neoforge/{{@loaderversion@}}-beta/neoforge-{{@loaderversion@}}-beta-installer.jar'
+    # For Forge: installerUrl: "http://files.minecraftforge.net/maven/net/minecraftforge/forge/{{@mcversion@}}-{{@loaderversion@}}/forge-{{@mcversion@}}-{{@loaderversion@}}-installer.jar"
+    # For Neoforge installerUrl: 'https://maven.neoforged.net/releases/net/neoforged/neoforge/{{@loaderversion@}}-beta/neoforge-{{@loaderversion@}}-beta-installer.jar'
     installerUrl:
 
     # Installer Arguments
@@ -57,18 +57,18 @@ install:
     modpackFormat: curse
 
     # Settings which are specific to the format used, might not be needed in some casese
-    #formatSpecific:
-    #     optional paramenter used for curse to specify a whole project to ignore (mostly if it is client side only)
-    #     ignoreProject:
-    #        - 231275 # Ding
-    #        - 391382 # More Overlays Updated
-    #        - 238372 # Neat
-    #        - 271740 # Toast Control
-    #        - 358191 # PackMenu
-    #        - 513857 # OAuth
-    #        - 521714 # PonderJS
-    #        - 360673 # Custom Window Title
-    #        - 401648 # BetterF3
+    formatSpecific:
+        # optional paramenter used for curse to specify a whole project to ignore (mostly if it is client side only)
+        ignoreProject:
+            - 231275 # Ding
+            - 391382 # More Overlays Updated
+            - 238372 # Neat
+            - 271740 # Toast Control
+            - 358191 # PackMenu
+            - 513857 # OAuth
+            - 521714 # PonderJS
+            - 360673 # Custom Window Title
+            - 401648 # BetterF3
 
     # The base path where the server should be installed to, ~ for current path
     baseInstallPath: ~
@@ -76,20 +76,20 @@ install:
     # a list of files which are supposed to be ignored when installing it from the client files
     # this can either use regex or glob {default glob: https://docs.oracle.com/javase/8/docs/api/java/nio/file/FileSystem.html#getPathMatcher-java.lang.String-}
     # specify with regex:.... or glob:.... if you want to force a matching type
-    #ignoreFiles:
-    #    - resources/**
-    #    - packmenu/**
-    #    - kubejs/assets/**
-    #    - kubejs/client_scripts/**
-    #    - building_gadgets_patterns/**
-    #    - config/*-client.toml
-    #    - defaultconfigs/*-client.toml
-    #    - local/**
+    ignoreFiles:
+        - resources/**
+        - packmenu/**
+        - kubejs/assets/**
+        - kubejs/client_scripts/**
+        - building_gadgets_patterns/**
+        - config/*-client.toml
+        - defaultconfigs/*-client.toml
+        - local/**
 
     # often a server needs more files, which are nearly useless on the client, such as tickprofiler
     # This is a list of files, each ' - ' is a new file:
     # url is the directlink to the file, destination is the path to where the file should be copied to
-    # additionalFiles:
+    additionalFiles:
         ~
         #- url: https://media.forgecdn.net/files/2844/278/restrictedportals-1.15-1.0.jar
         #  destination: mods/restrictedportals-1.15-1.0.jar
@@ -204,7 +204,7 @@ launch:
         - '-XX:SurvivorRatio=32'
         - '-XX:+PerfDisableSharedMem'
         - '-XX:MaxTenuringThreshold=1'
-        - '-Dusing.aikars.flags=https://mcflags.emc.gs'
-        - '-Daikars.new.flags=true'
-        - '-Dfml.readTimeout=180' # servertimeout
-        - '-Dfml.queryResult=confirm' # auto /fmlconfirm
+    #    - '-Dusing.aikars.flags=https://mcflags.emc.gs'
+    #    - '-Daikars.new.flags=true'
+    #    - '-Dfml.readTimeout=180' # servertimeout
+    #    - '-Dfml.queryResult=confirm' # auto /fmlconfirm

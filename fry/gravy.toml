@@ -1,0 +1,62 @@
+[core]
+api-port = 19996
+api-bind-address = "10.10.99.5"
+api-secret = ""
+data-folder = '/etc/fry/data/gravy'
+log-folder = '/home/mcservers/fry_servers/GRAVY/fry'
+log-level = 'INFO'
+log-rotation = '1 day' # size ( "10 MB", "0.5 GB"), time ("12:00", "monday at 1:00"), age ("1 day", "daily", "monthly", "monday", "1 day 2 hours"
+log-retention = 12 # number of  files to keep, age ("1 day", "2 weeks")
+
+[launcher]
+# minecraft
+name = "minecraft"
+server-folder = '/home/mcservers/fry_servers/GRAVY'
+#java = '/usr/lib/jvm/java-17-openjdk-amd64/bin/java'
+java = 'java'
+jar = "serverstarter-2.4.0.jar"
+#jvm-options = "-Xms8G -Xmx8G -Djline.terminal=jline.UnsupportedTerminal -server"
+jvm-options = ""
+server-options = ""
+done-pattern = 'Done \(([0-9\.,]+)s\)\!.*'
+auto-start = true
+join-pattern = '(?P<username>[A-Za-z0-9_]{1,16})\[.*/(?P<ip>[0-9\.]+):\d+\] logged in with entity id .+'
+#join-pattern = '(?P<username>[A-Za-z0-9_]{1,16})\[IP hidden] logged in with entity id .+'
+quit-pattern = '(?P<username>[A-Za-z0-9_]{1,16}) lost connection: (?P<reason>.+)'
+#quit-pattern = '(?P<username>[A-Za-z0-9_]{1,16}) lost connection: (?P<reason>.+)'
+chat-pattern =  '(\[Not Secure\] )*<(?P<username>[A-Za-z0-9_]{1,16})> (?P<message>.+)' #'<(?P<username>[A-Za-z0-9_]{1,16})> (?P<message>.+)'
+
+# whitelist-override = ''
+
+# factorio
+# name = "factorio"
+# server-folder = "/home/factorio/breakfastcraft/servers/factorio"
+# exe = "/home/factorio/breakfastcraft/servers/factorio/bin/x64/factorio"
+# map = "TEST"
+# done-pattern = '.*from\(CreatingGame\) to\(InGame\)$'
+
+[plugins.timeout]
+enabled = true
+interval = 120
+unknown-command = '/~fryCrashCheck~'
+unknown-command-pattern = 'Unknown or incomplete command.*'
+
+[plugins.save]
+enabled = true
+interval = 300
+command = 'save-all'
+
+[plugins.crash-detector]
+enabled = true
+# minecraft
+crash-pattern='This crash report has been saved to:\s(?P<file>.*$)' # If possible have a named group "(?P<file>...)" to capture the file name
+
+[plugins.debug]
+enabled = true
+
+[plugins.discord]
+enabled = true
+token = ""
+admin-channels =[]
+chat-channels = []
+

@@ -1,0 +1,58 @@
+[core]
+api-port = 19994
+api-bind-address = "10.10.99.1"
+api-secret = ""
+data-folder = '/etc/fry/data/brunch'
+log-folder = '/home/mcservers/fry_servers/BRUNCH/fry'
+log-level = 'INFO'
+log-rotation = '1 day' # size ( "10 MB", "0.5 GB"), time ("12:00", "monday at 1:00"), age ("1 day", "daily", "monthly", "monday", "1 day 2 hours"
+log-retention = 12 # number of  files to keep, age ("1 day", "2 weeks")
+
+[launcher]
+# minecraft
+name = "minecraft"
+server-folder = '/home/mcservers/fry_servers/BRUNCH'
+java = 'java'
+jar = "*forge*.jar"
+jvm-options = "-Xms8G -Xmx8G -Djline.terminal=jline.UnsupportedTerminal -d64 -server -Dfml.queryResult=confirm -XX:+UseG1GC -XX:+ParallelRefProcEnabled -XX:MaxGCPauseMillis=200 -XX:+UnlockExperimentalVMOptions -XX:+DisableExplicitGC -XX:+AlwaysPreTouch -XX:G1NewSizePercent=30 -XX:G1MaxNewSizePercent=40 -XX:G1HeapRegionSize=8M -XX:G1ReservePercent=20 -XX:G1HeapWastePercent=5 -XX:G1MixedGCCountTarget=4 -XX:InitiatingHeapOccupancyPercent=15 -XX:G1MixedGCLiveThresholdPercent=90 -XX:G1RSetUpdatingPauseTimePercent=5 -XX:SurvivorRatio=32 -XX:+PerfDisableSharedMem -XX:MaxTenuringThreshold=1"
+server-options = ""
+done-pattern = 'Done \(([0-9\.,]+)s\)\!.*'
+auto-start = true
+join-pattern = '(?P<username>[A-Za-z0-9_]{1,16})\[.*/(?P<ip>[0-9\.]+):\d+\] logged in with entity id .+'
+quit-pattern = '(?P<username>[A-Za-z0-9_]{1,16}) lost connection: (?P<reason>.+)'
+chat-pattern = '<(?P<username>[A-Za-z0-9_]{1,16})> (?P<message>.+)'
+
+# whitelist-override = ''
+
+# factorio
+# name = "factorio"
+# server-folder = "/home/factorio/breakfastcraft/servers/factorio"
+# exe = "/home/factorio/breakfastcraft/servers/factorio/bin/x64/factorio"
+# map = "TEST"
+# done-pattern = '.*from\(CreatingGame\) to\(InGame\)$'
+
+[plugins.timeout]
+enabled = true
+interval = 120
+unknown-command = '/~fryCrashCheck~'
+unknown-command-pattern = 'Unknown.*'
+
+[plugins.save]
+enabled = true
+interval = 300
+command = 'save-all'
+
+[plugins.crash-detector]
+enabled = true
+# minecraft
+crash-pattern='This crash report has been saved to:\s(?P<file>.*$)' # If possible have a named group "(?P<file>...)" to capture the file name
+
+[plugins.debug]
+enabled = true
+
+[plugins.discord]
+enabled = true
+token = ""
+admin-channels =[]
+chat-channels = []
+
